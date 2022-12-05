@@ -36,12 +36,7 @@ class HashTable<V : IUserType> {
         }
     }
 
-    fun get(key: String): V? {
-        val index = calculateHashCode(key)
-        val listAtArraySlot = entries[index]
-
-        return listAtArraySlot.find { it.key == key }?.value
-    }
+    fun get(key: String): V? = entries[calculateHashCode(key)].find { it.key == key }?.value
 
     fun remove(key: String) {
         val index = calculateHashCode(key)
@@ -91,7 +86,13 @@ class HashTable<V : IUserType> {
             fillingIndex = 0
             index++
         }
-        return res
+        return res + med(filling)
+    }
+
+    private fun med(list: MutableList<Int>): Double {
+        var res = 0.0
+        list.forEach { res += it }
+        return res / list.size
     }
 
     override fun toString(): String {

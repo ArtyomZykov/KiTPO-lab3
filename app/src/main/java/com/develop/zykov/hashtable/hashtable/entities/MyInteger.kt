@@ -7,7 +7,6 @@ import org.json.JSONObject
 
 class MyInteger(val integer: Int = 0) : IUserType {
 
-
     override val key: String
         get() = integer.toString()
 
@@ -15,9 +14,7 @@ class MyInteger(val integer: Int = 0) : IUserType {
         return "integer - $integer"
     }
 
-    override fun copy(): IUserType {
-        return MyInteger(integer)
-    }
+    override fun copy(): IUserType = MyInteger(integer)
 
     override val className: String
         get() = this.javaClass.name
@@ -30,7 +27,5 @@ class MyInteger(val integer: Int = 0) : IUserType {
         }
     }
 
-    override fun packValue(): String {
-        return "{\"integer\":" + integer.toString() + "}"
-    }
+    override fun packValue(): String = "{\"integer\":$integer}"
 }

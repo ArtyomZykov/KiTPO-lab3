@@ -17,7 +17,7 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         val table: HashTable<MyInteger> = HashTable()
 
-        for(i in 1..1000) table.add(MyInteger(i))
+        for (i in 0..2353) table.add(MyInteger((-100000..100000).random()))
 
         println(table.showFillingUniformity())
     }
